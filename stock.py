@@ -364,12 +364,12 @@ class ShipmentOut:
             commodity.Weight.Value = float("%.2f" % move.get_weight(weight_uom))
             commodity.Quantity = int(move.quantity)
             commodity.QuantityUnits = 'EA'
-            commodity.UnitPrice.Amount = move.unit_price.quantize(Decimal('.01'))
+            commodity.UnitPrice.Amount = move.product.customs_value.quantize(Decimal('.01'))
             commodity.UnitPrice.Currency = self.company.currency.code
             commodity.CustomsValue.Currency = self.company.currency.code
-            commodity.CustomsValue.Amount = (Decimal(str(move.quantity)) * move.unit_price).quantize(Decimal('.01'))
+            commodity.CustomsValue.Amount = (Decimal(str(move.quantity)) * move.product.customs_value).quantize(Decimal('.01'))
             commodities.append(commodity)
-            customs_value += Decimal(str(move.quantity)) * move.unit_price
+            customs_value += Decimal(str(move.quantity)) * move.product.customs_value
 
         customs_detail.CustomsValue.Currency = self.company.currency.code
         customs_detail.CustomsValue.Amount = customs_value.quantize(Decimal('.01'))
