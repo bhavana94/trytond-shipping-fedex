@@ -20,11 +20,12 @@ major_version = int(major_version)
 minor_version = int(minor_version)
 
 requires = [
-    'pyfedex>=1.3',
+    'fedex',
 ]
 
 MODULE2PREFIX = {
-    'shipping': 'fio'
+    'shipping': 'fio',
+    'customs_value': 'fio'
 }
 
 MODULE = "shipping_fedex"
