@@ -328,7 +328,7 @@ class ShipmentOut:
                     'name': "%s_%s_Fedex.png" % (tracking_number, id),
                     'type': 'data',
                     'data': buffer(base64.decodestring(image.Image)),
-                    'resource': '%s,%s' % (self.__name__, self.id)
+                    'resource': '%s,%d' % (self.tracking_number.__name__, self.tracking.id)
                 }])
 
         for rate_detail in ship_request.response.CompletedShipmentDetail.ShipmentRating.ShipmentRateDetails:
